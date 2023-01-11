@@ -57,83 +57,83 @@ options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
 
 
-try:
-    driver1 = webdriver.Chrome(executable_path=path,chrome_options=options)
-except Exception as e:
-    print(e)
+# try:
+#     driver1 = webdriver.Chrome(executable_path=path,chrome_options=options)
+# except Exception as e:
+#     print(e)
     
 
 
-driver1.get("https://www.youtube.com")
-time.sleep(3)
+# driver1.get("https://www.youtube.com")
+# time.sleep(3)
 
 
 
-set_driver_cookies(driver1)
-driver1.refresh()
+# set_driver_cookies(driver1)
+# driver1.refresh()
 
-time.sleep(3)
-driver1.get("https://www.ytmonster.net/login")
+# time.sleep(3)
+# driver1.get("https://www.ytmonster.net/login")
 
-time.sleep(3)
+# time.sleep(3)
 
-try:
-    driver1.execute_script("""return document.forms[0].children[0].querySelector("input").value='vinay2210978@gmail.com'""")
-    driver1.execute_script("""return document.forms[0].children[1].querySelector("input").value='Musha22@'""")
-    driver1.execute_script("return document.forms[0].children[2].click()")
-except Exception as e:
-    print(e)
-    pass
-
-
+# try:
+#     driver1.execute_script("""return document.forms[0].children[0].querySelector("input").value='vinay2210978@gmail.com'""")
+#     driver1.execute_script("""return document.forms[0].children[1].querySelector("input").value='Musha22@'""")
+#     driver1.execute_script("return document.forms[0].children[2].click()")
+# except Exception as e:
+#     print(e)
+#     pass
 
 
 
-try:
-    driver1.get("https://www.ytmonster.net/exchange/views")
-    time.sleep(5)
-    driver1.execute_script("""document.querySelectorAll("div[id^=endAll]")[0].click()""")
-except:
-    pass
-try:
-    # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="open-client"]')))[0].click()
-    driver1.execute_script(""" return document.querySelectorAll("a[class^='open-client']")[0].click()""")
-    time.sleep(5)
-
-    if len(driver1.window_handles)>1:
-        driver1.switch_to.window(driver1.window_handles[1])
-        # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id^=start]"))).click()
-        driver1.execute_script(""" return document.querySelectorAll("div[id^=start]")[0].click()""")
-        time.sleep(10)
-
-    if len(driver1.window_handles)>2:
-        driver1.switch_to.window(driver1.window_handles[0])
-
-    # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="open-client"]')))[0].click()
-    driver1.execute_script(""" return document.querySelectorAll("a[class^='open-client']")[0].click()""")
-    time.sleep(5)
-
-    if len(driver1.window_handles)>3:
-        driver1.switch_to.window(driver1.window_handles[3])
-        # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id^=start]"))).click()
-        driver1.execute_script(""" return document.querySelectorAll("div[id^=start]")[0].click()""")
-        time.sleep(10)
 
 
-    if len(driver1.window_handles)>4:
-        driver1.switch_to.window(driver1.window_handles[0])
+# try:
+#     driver1.get("https://www.ytmonster.net/exchange/views")
+#     time.sleep(5)
+#     driver1.execute_script("""document.querySelectorAll("div[id^=endAll]")[0].click()""")
+# except:
+#     pass
+# try:
+#     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="open-client"]')))[0].click()
+#     driver1.execute_script(""" return document.querySelectorAll("a[class^='open-client']")[0].click()""")
+#     time.sleep(5)
 
-    # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="open-client"]')))[0].click()
-    driver1.execute_script(""" return document.querySelectorAll("a[class^='open-client']")[0].click()""")
-    time.sleep(5)
+#     if len(driver1.window_handles)>1:
+#         driver1.switch_to.window(driver1.window_handles[1])
+#         # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id^=start]"))).click()
+#         driver1.execute_script(""" return document.querySelectorAll("div[id^=start]")[0].click()""")
+#         time.sleep(10)
 
-    if len(driver1.window_handles)>5:
-        driver1.switch_to.window(driver1.window_handles[5])
-        # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id^=start]"))).click()
-        driver1.execute_script(""" return document.querySelectorAll("div[id^=start]")[0].click()""")
-        time.sleep(10)
-except Exception as e:
-    print(e)
+#     if len(driver1.window_handles)>2:
+#         driver1.switch_to.window(driver1.window_handles[0])
+
+#     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="open-client"]')))[0].click()
+#     driver1.execute_script(""" return document.querySelectorAll("a[class^='open-client']")[0].click()""")
+#     time.sleep(5)
+
+#     if len(driver1.window_handles)>3:
+#         driver1.switch_to.window(driver1.window_handles[3])
+#         # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id^=start]"))).click()
+#         driver1.execute_script(""" return document.querySelectorAll("div[id^=start]")[0].click()""")
+#         time.sleep(10)
+
+
+#     if len(driver1.window_handles)>4:
+#         driver1.switch_to.window(driver1.window_handles[0])
+
+#     # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[class="open-client"]')))[0].click()
+#     driver1.execute_script(""" return document.querySelectorAll("a[class^='open-client']")[0].click()""")
+#     time.sleep(5)
+
+#     if len(driver1.window_handles)>5:
+#         driver1.switch_to.window(driver1.window_handles[5])
+#         # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id^=start]"))).click()
+#         driver1.execute_script(""" return document.querySelectorAll("div[id^=start]")[0].click()""")
+#         time.sleep(10)
+# except Exception as e:
+#     print(e)
 
 
 
