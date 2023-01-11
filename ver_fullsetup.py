@@ -2,41 +2,25 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
 import time
 import random 
 import os,sys, stat,json
 import subprocess
-from webdriver_manager.chrome import ChromeDriverManager
 from utilities import *
-import regex as re
-import sys,traceback
-import socket
+
 from xvfbwrapper import Xvfb
 
 
 
 
-# print(subprocess.Popen("npm install chrome -g",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(subprocess.Popen("chrome --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("npm install chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
-chrome_path=r"{}/node_modules/chromium/lib/chromium/chrome-linux/chrome".format(os.getcwd())
 
-print(subprocess.Popen("npm install xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
+print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-
-
-
-
-# print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-
 vdisplay = Xvfb()
 vdisplay.start()
-# chrome_path=r"/usr/bin/google-chrome-stable"
+chrome_path=r"/usr/bin/google-chrome-stable"
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
 path=r"chrome/chromedriver"
@@ -44,15 +28,74 @@ path=r"chrome/chromedriver"
 os.chmod(path, 0o777)
 options = Options()
 options.binary_location =binary_path
-
+# options.add_argument('--headless')
 options.add_argument('--no-sandbox')
-# options.add_argument("--remote-debugging-port=8080")
-# options.add_extension(os.getcwd()+"/chrome/utubehits.crx")
-
 options.add_argument("load-extension="+os.getcwd()+"/chrome/viewgrip");
-options.add_argument("--window-size=300,500")
+options.add_argument("--start-maximized");
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
+# user_agent= get_user_agent()
+# if user_agent is not None:
+#     options.add_argument('--user-agent='+user_agent)
+
+
+
+
+# from selenium import webdriver
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.support import expected_conditions as EC
+# import time
+# import random 
+# import os,sys, stat,json
+# import subprocess
+# from webdriver_manager.chrome import ChromeDriverManager
+# from utilities import *
+# import regex as re
+# import sys,traceback
+# import socket
+# from xvfbwrapper import Xvfb
+
+
+
+
+# # print(subprocess.Popen("npm install chrome -g",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# # print(subprocess.Popen("chrome --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("npm install chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# chrome_path=r"{}/node_modules/chromium/lib/chromium/chrome-linux/chrome".format(os.getcwd())
+
+# print(subprocess.Popen("npm install xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
+
+
+
+# # print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# # print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# # print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
+# vdisplay = Xvfb()
+# vdisplay.start()
+# # chrome_path=r"/usr/bin/google-chrome-stable"
+# os.environ['CHROME_PATH']=chrome_path
+# binary_path=os.environ.get('CHROME_PATH')
+# path=r"chrome/chromedriver"
+# # path=r"chrome/chromedriver.exe"
+# os.chmod(path, 0o777)
+# options = Options()
+# options.binary_location =binary_path
+
+# options.add_argument('--no-sandbox')
+# # options.add_argument("--remote-debugging-port=8080")
+# # options.add_extension(os.getcwd()+"/chrome/utubehits.crx")
+
+# options.add_argument("load-extension="+os.getcwd()+"/chrome/viewgrip");
+# options.add_argument("--window-size=300,500")
+# options.add_argument('--disable-dev-shm-usage')
+# options.add_argument("--disable-gpu")
 
 
 # try:
