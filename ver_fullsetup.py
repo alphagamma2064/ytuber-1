@@ -30,6 +30,8 @@ options = Options()
 options.binary_location =binary_path
 # options.add_argument('--headless')
 options.add_argument('--no-sandbox')
+options.add_extension(os.getcwd()+"/chrome/vpn.crx")
+
 options.add_argument("load-extension="+os.getcwd()+"/chrome/viewgrip");
 options.add_argument("--start-maximized");
 options.add_argument('--disable-dev-shm-usage')
@@ -244,7 +246,10 @@ time.sleep(30)
 
 set_view_grip_cookies(driver)
 # driver.refresh()
-time.sleep(2)
+time.sleep(5)
+
+turn_on_vpn(driver)
+time.sleep(5)
 
 driver.get("https://www.viewgrip.net/worker_session.php")
 time.sleep(2)
