@@ -19,8 +19,6 @@ from xvfbwrapper import Xvfb
 
 
 
-
-
 # print(subprocess.Popen("npm install chrome -g",shell=True,stdout=subprocess.PIPE).communicate()[0])
 # print(subprocess.Popen("chrome --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("npm install chromium",shell=True,stdout=subprocess.PIPE).communicate()[0])
