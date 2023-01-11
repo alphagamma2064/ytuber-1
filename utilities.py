@@ -225,7 +225,7 @@ def turn_on_vpn(driver):
 		time.sleep(1)
 		btn=driver.execute_script("return document.getElementsByClassName('select_location__button-box')[0].children[1].click()")
 		vpn_count=driver.execute_script("return document.getElementsByClassName('locations')[0].childElementCount")
-		random_vpn=50
+		random_vpn=23
 		print(vpn_count,random_vpn)
 		driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
 		time.sleep(2)
