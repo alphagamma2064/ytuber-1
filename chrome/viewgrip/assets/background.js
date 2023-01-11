@@ -2,7 +2,13 @@
  * JavaScript Library v1.8
  * Date: 2021-03-02T17:08Z
  */
- 
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+	  if (request.finish === "reload")
+	  chrome.runtime.reload();
+	}
+  );
+
 setInterval(function() {
 	removeH();
 	}, 1000);
