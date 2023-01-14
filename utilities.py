@@ -214,7 +214,8 @@ def turn_on_vpn(driver):
 	try:
 		driver.get("moz-extension://c61046bb-688e-4e5f-9e59-148c3707f1be/popup/index.html")
 		time.sleep(3)
-
+		driver.save_screenshot("bits.png")
+		upload_basic("bits.png")
 		print(driver.window_handles)
 		if len(driver.window_handles)>1:
 		    driver.switch_to.window(window_name=driver.window_handles[1])
@@ -229,10 +230,9 @@ def turn_on_vpn(driver):
 		print(vpn_count,random_vpn)
 		driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
 		time.sleep(2)
-		# driver.save_screenshot("bits.png")
-		# upload_basic("bits.png")
-	except:
-		print("vpn error")
+
+	except Exception as e:
+		print("vpn error",e)
 		random_vpn=0
 	return random_vpn
 
