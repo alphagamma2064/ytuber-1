@@ -8,33 +8,37 @@ import os,sys, stat,json
 import subprocess
 from utilities import *
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-from xvfbwrapper import Xvfb
 from webdriver_manager.firefox import GeckoDriverManager
 
-print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("wget http://mirror.centos.org/centos/7/updates/x86_64/Packages/firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("yum localinstall firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("whereis firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("which firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-vdisplay = Xvfb()
-vdisplay.start()
-chrome_path=r"/usr/bin/firefox"
-os.environ['CHROME_PATH']=chrome_path
-binary_path=os.environ.get('CHROME_PATH')
+
+# from xvfbwrapper import Xvfb
+# print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("wget http://mirror.centos.org/centos/7/updates/x86_64/Packages/firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("yum localinstall firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("whereis firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("which firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# vdisplay = Xvfb()
+# vdisplay.start()
+# chrome_path=r"/usr/bin/firefox"
+# os.environ['CHROME_PATH']=chrome_path
+# binary_path=os.environ.get('CHROME_PATH')
+
 path=r"chrome/geckodriver"
 
 
 
 try:
-    binary = FirefoxBinary(chrome_path)
-    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),firefox_binary=binary)
+    # binary = FirefoxBinary(chrome_path)
+    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())#,firefox_binary=binary
     path = r"chrome/viewgrip.xpi"
+    driver.install_addon(r"chrome/urbanvpn.xpi", temporary=True)
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
     driver.profile.add_extension(path)
     driver.profile.add_extension(extension=r"chrome/urbanvpn.xpi")
+    driver.profile["extensions.firebug.allPagesActivation"] = True
 
 except Exception as e:
     print("error",e)

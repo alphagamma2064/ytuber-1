@@ -1,0 +1,56 @@
+{
+  "manifest_version": 2,
+  "name": "ViewGrip - For YouTube",
+  "author": "ViewGrip Group",
+  "version": "3.4.5",
+  "homepage_url": "https://www.viewgrip.net",
+  "description": "Add-ons To promote YouTube videos for free, get more views and likes safely.",
+  "icons": {
+    "16": "img/icon-16.png",
+    "32": "img/icon-32.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "permissions": [
+    "history",
+    "<all_urls>",
+    "storage"
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "img/icon-19.png",
+      "38": "img/icon-38.png"
+    },
+    "default_title": "ViewGrip for Youtube",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "assets/plugins/jquery-3.6.2.js",
+        "assets/plugins/jquery.typetype.min.js",
+        "assets/plugins/Main.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": [
+      "assets/plugins/jquery-3.6.2.js",
+      "assets/background.js"
+    ],
+    "persistent": false
+  },
+  "options_ui": {
+    "page": "index.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "support@viewgrip.net"
+    }
+  }
+}
