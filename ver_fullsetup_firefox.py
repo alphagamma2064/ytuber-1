@@ -39,13 +39,13 @@ path=r"chrome/geckodriver"
 
 
 try:
-    driver = webdriver.Firefox(executable_path=path)
+    driver = webdriver.Firefox(executable_path=os.getcwd()+'/'+path)
     path = r"chrome/viewgrip.xpi"
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
     driver.profile.add_extension(path)
 except Exception as e:
-    print(e)
+    print("error",e)
 
 
 
