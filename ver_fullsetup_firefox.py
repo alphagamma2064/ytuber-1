@@ -43,7 +43,7 @@ path=r"chrome/geckodriver"
 
 try:
     binary = FirefoxBinary(chrome_path)
-    driver = webdriver.Firefox(executable_path=os.getcwd()+'/'+path,firefox_binary=binary)
+    driver = webdriver.Firefox(executable_path=path,firefox_binary=binary)
     path = r"chrome/viewgrip.xpi"
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
