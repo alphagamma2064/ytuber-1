@@ -212,7 +212,7 @@ def get_random_video(only_video=False):
 
 def turn_on_vpn(driver):
 	try:
-		driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
+		driver.get("moz-extension://c61046bb-688e-4e5f-9e59-148c3707f1be/popup/index.html")
 		time.sleep(3)
 
 		print(driver.window_handles)

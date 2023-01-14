@@ -9,7 +9,7 @@ import subprocess
 from utilities import *
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from xvfbwrapper import Xvfb
-
+from webdriver_manager.firefox import GeckoDriverManager
 
 print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("wget http://mirror.centos.org/centos/7/updates/x86_64/Packages/firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
@@ -24,21 +24,7 @@ chrome_path=r"/usr/bin/firefox"
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
 path=r"chrome/geckodriver"
-# path=r"chrome/chromedriver.exe"
-# os.chmod(path, 0o777)
-# options = Options()
-# options.binary_location =binary_path
-# # options.add_argument('--headless')
-# options.add_argument('--no-sandbox')
-# options.add_extension(os.getcwd()+"/chrome/vpn.crx")
 
-# options.add_argument("load-extension="+os.getcwd()+"/chrome/viewgrip");
-# options.add_argument("--start-maximized");
-# options.add_argument('--disable-dev-shm-usage')
-# options.add_argument("--disable-gpu")
-
-
-from webdriver_manager.firefox import GeckoDriverManager
 
 
 try:
@@ -48,6 +34,8 @@ try:
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
     driver.profile.add_extension(path)
+    driver.add_extension(extension=r"chrome/urbanvpn.xpi")
+
 except Exception as e:
     print("error",e)
 
@@ -88,6 +76,10 @@ set_driver_cookies(driver)
 driver.refresh()
 
 
+turn_on_vpn(driver)
+time.sleep(5)
+
+
 driver.get("https://www.viewgrip.net/")
 time.sleep(5)
 
@@ -101,8 +93,6 @@ set_view_grip_cookies(driver)
 # driver.refresh()
 time.sleep(5)
 
-# turn_on_vpn(driver)
-time.sleep(5)
 
 driver.get("https://www.viewgrip.net/worker_session.php")
 time.sleep(2)
