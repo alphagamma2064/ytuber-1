@@ -167,7 +167,7 @@ if len(driver.window_handles)>1:
 			# upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
 			time.sleep(180)
 			if len(driver.window_handles)>2:
-			time.sleep(1300)
+				time.sleep(1300)
 
 
 		driver.switch_to.window(window_after)
