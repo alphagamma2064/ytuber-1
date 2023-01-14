@@ -12,9 +12,8 @@ from xvfbwrapper import Xvfb
 
 
 
-
-
-print(subprocess.Popen("yum localinstall firefox.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("wget http://mirror.centos.org/centos/7/updates/x86_64/Packages/firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("yum localinstall firefox-102.6.0-1.el7.centos.i686.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
 vdisplay = Xvfb()
