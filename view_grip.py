@@ -144,39 +144,39 @@ if len(driver.window_handles)>1:
 		print("before2")
 
 		driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
-        time.sleep(18)
-        driver.switch_to.window(window_after)
-        driver.set_window_size(403,686)
-        time.sleep(2)
-        driver.save_screenshot("viewgrip.png")
-        upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
-        if len(driver.window_handles)>2:
-            driver.switch_to.window(driver.window_handles[-1])
-            time.sleep(13)
-            print("!!!!!111")
-            # driver.save_screenshot("viewgrip.png")
-            # upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
-            time.sleep(1300)
-        else:
-            driver.switch_to.window(window_after)
-            driver.set_window_size(403,686)
-            driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
-            time.sleep(13)
-            print("::::::2222")
-            # driver.save_screenshot("viewgrip.png")
-            # upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
-            time.sleep(180)
-            if len(driver.window_handles)>2:
-                time.sleep(1300)
+		time.sleep(18)
+		driver.switch_to.window(window_after)
+		driver.set_window_size(403,686)
+		time.sleep(2)
+		driver.save_screenshot("viewgrip.png")
+		upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
+		if len(driver.window_handles)>2:
+			driver.switch_to.window(driver.window_handles[-1])
+			time.sleep(13)
+			print("!!!!!111")
+			# driver.save_screenshot("viewgrip.png")
+			# upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
+			time.sleep(1300)
+		else:
+			driver.switch_to.window(window_after)
+			driver.set_window_size(403,686)
+			driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
+			time.sleep(13)
+			print("::::::2222")
+			# driver.save_screenshot("viewgrip.png")
+			# upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
+			time.sleep(180)
+			if len(driver.window_handles)>2:
+			time.sleep(1300)
 
 
-        driver.switch_to.window(window_after)
-        driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
-        time.sleep(5)
-        driver.execute_script("""return document.querySelectorAll("a[onclick='clear_session();']")[0].click()""")
-    except Exception as e:
-        print(e)
-        pass
+		driver.switch_to.window(window_after)
+		driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
+		time.sleep(5)
+		driver.execute_script("""return document.querySelectorAll("a[onclick='clear_session();']")[0].click()""")
+		except Exception as e:
+		print(e)
+		pass
 
 driver.quit()
 
