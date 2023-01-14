@@ -34,7 +34,7 @@ try:
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
     driver.profile.add_extension(path)
-    driver.add_extension(extension=r"chrome/urbanvpn.xpi")
+    driver.profile.add_extension(extension=r"chrome/urbanvpn.xpi")
 
 except Exception as e:
     print("error",e)
