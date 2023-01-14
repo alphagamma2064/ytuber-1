@@ -7,7 +7,7 @@ import random
 import os,sys, stat,json
 import subprocess
 from utilities import *
-
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from xvfbwrapper import Xvfb
 
 
@@ -38,14 +38,17 @@ path=r"chrome/geckodriver"
 
 
 
+
+
 try:
-    driver = webdriver.Firefox(executable_path=path)
+    binary = FirefoxBinary(chrome_path)
+    driver = webdriver.Firefox(executable_path=os.getcwd()+'/'+path,firefox_binary=binary)
     path = r"chrome/viewgrip.xpi"
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
     driver.profile.add_extension(path)
 except Exception as e:
-    print(e)
+    print("error",e)
 
 
 
