@@ -38,12 +38,12 @@ path=r"chrome/geckodriver"
 # options.add_argument("--disable-gpu")
 
 
-
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 try:
     binary = FirefoxBinary(chrome_path)
-    driver = webdriver.Firefox(executable_path=path,firefox_binary=binary)
+    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),firefox_binary=binary)
     path = r"chrome/viewgrip.xpi"
     driver.install_addon(path, temporary=True)
     driver.profile = webdriver.FirefoxProfile()
