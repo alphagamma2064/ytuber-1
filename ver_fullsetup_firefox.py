@@ -138,8 +138,8 @@ if len(driver.window_handles)>1:
             pass
 
         print("before2")
-       driver.save_screenshot("viewgrip.png")
-       upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
+        driver.save_screenshot("viewgrip.png")
+        upload_basic("viewgrip.png",'13ALQG3rJgrQXZxivxKZ_xXED-nInKsnM')
 
         driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
         time.sleep(18)
