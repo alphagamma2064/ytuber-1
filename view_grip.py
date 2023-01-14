@@ -174,7 +174,7 @@ if len(driver.window_handles)>1:
 		driver.execute_script("""document.querySelectorAll("span[onclick='javascript:StartWorker();']")[0].click()""")
 		time.sleep(5)
 		driver.execute_script("""return document.querySelectorAll("a[onclick='clear_session();']")[0].click()""")
-		except Exception as e:
+	except Exception as e:
 		print(e)
 		pass
 
