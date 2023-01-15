@@ -28,10 +28,10 @@ path=r"chrome/chromedriver"
 os.chmod(path, 0o777)
 options = Options()
 options.binary_location =binary_path
-# options.add_argument('--headless')
+options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_extension(os.getcwd()+"/chrome/vpn.crx")
-options.add_argument("load-extension="+os.getcwd()+"/chrome/viewgrip");
+options.add_argument("load-extension="+os.getcwd()+"/chrome/viewgrip2");
 options.add_argument("--start-maximized");
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
